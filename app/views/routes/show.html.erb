@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><strong>Route</strong></th>
+      <th><strong>Truck</strong></th>
+      <th><strong>Driver</strong></th>
+      <th><strong>Date</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @route.route_code %></td>
+      <td><%= @route.truck %></td>
+      <td><%= @route.driver %></td>
+      <td><%= display_date(@route.updated_at) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Edit', edit_route_path(@route), class: "btn btn-primary" %>
+<%= link_to 'Back', routes_path, class: "btn btn-primary" %>

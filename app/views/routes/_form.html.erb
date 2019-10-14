@@ -1,0 +1,34 @@
+<%= form_with(model: route, local: true) do |form| %>
+  <% if route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+      <ul>
+      <% route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th> <%= form.label :route_code, 'Route' %> </th>
+        <th> <%= form.label :truck %> </th>
+        <th> <%= form.label :driver %> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= form.text_field :route_code, :size=>"6", id: :route_route_code %> </td>
+        <td> <%= form.text_field :truck, :size=>"6", id: :route_truck %> </td>
+        <td> <%= form.text_field :driver, :size=>"7", id: :route_driver %> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

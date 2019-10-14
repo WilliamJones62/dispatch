@@ -1,0 +1,11 @@
+<span class="primary-logo">
+</span>
+<% if current_user %>
+  <div id="navbar">
+    <span><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-primary" %></span>
+  </div>
+<% end %>
+<h1 class="title">Dispatch
+</h1>
+
+<br>
