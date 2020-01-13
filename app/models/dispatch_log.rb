@@ -1,0 +1,2 @@
+class DispatchLog < ApplicationRecord
+end

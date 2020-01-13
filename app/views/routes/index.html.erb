@@ -7,9 +7,10 @@
     <tr>
       <th>Route</th>
       <th>Truck</th>
-      <th>Driver</th>
+      <th>Driver ID</th>
       <th>Date</th>
       <th>User</th>
+      <th>Status</th>
       <th></th>
       <th></th>
     </tr>
@@ -23,6 +24,13 @@
         <td>&nbsp;&nbsp;<%= route.driver %></td>
         <td>&nbsp;&nbsp;<%= display_date(route.updated_at) %></td>
         <td>&nbsp;&nbsp;<%= route.badge %></td>
+        <% if !route.issued_flag && !route.returned_flag %>
+          <td>&nbsp;&nbsp; Awaiting issue </td>
+        <% elsif route.issued_flag %>
+          <td>&nbsp;&nbsp; Issued </td>
+        <% else %>
+          <td>&nbsp;&nbsp; Returned </td>
+        <% end %>
         <td>&nbsp;&nbsp;<%= link_to 'Edit', edit_route_path(route), class: "btn btn-primary" %></td>
         <td>&nbsp;&nbsp;<%= link_to 'Delete', route, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
       </tr>

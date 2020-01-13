@@ -16,14 +16,51 @@
       <tr>
         <th> <%= form.label :route_code, 'Route' %> </th>
         <th> <%= form.label :truck %> </th>
-        <th> <%= form.label :driver %> </th>
+        <th> <%= form.label :driver, "Driver ID" %> </th>
+        <% if !@route.issued_flag %>
+          <th> <%= form.label :issued_flag, 'Issued?' %></th>
+        <% else %>
+          <th> <%= form.label :returned_flag, 'Returned?' %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td> <%= form.text_field :route_code, :size=>"6", id: :route_route_code %> </td>
-        <td> <%= form.text_field :truck, :size=>"6", id: :route_truck %> </td>
+        <% if @new %>
+          <td> <%= form.text_field :route_code, :size=>"6", id: :route_route_code %> </td>
+        <% else %>
+          <td> <%= form.text_field :route_code, :size=>"6", :readonly => true, id: :route_route_code %> </td>
+        <% end %>
+        <td> <%= form.select :truck, @trucks, {}, {:id => :route_truck, :value => params[:truck], :oninput=> ("setTruckData()")} %></td>
         <td> <%= form.text_field :driver, :size=>"7", id: :route_driver %> </td>
+        <% if !@route.issued_flag %>
+          <td> <%= form.check_box :issued_flag, id: :route_issued_flag %> </td>
+        <% else %>
+          <td> <%= form.check_box :returned_flag, id: :route_returned_flag %> </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th> Tablet </th>
+        <th> EZ Pass </th>
+        <th> Wexcard </th>
+        <th> Temp Logger </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="Tablet"><%= @tablet %></td>
+        <td id="EZPass"><%= @ez_pass %></td>
+        <td id="Wexcard"><%= @wexcard %></td>
+        <% if @temp_text == 'No temperature logger required' %>
+          <td id="Temperature"><%= @temp_text %></td>
+        <% else %>
+          <td class="blinking" id="Temperature"><%= @temp_text %></td>
+        <% end %>
       </tr>
     </tbody>
   </table>
@@ -32,3 +69,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+<p id= "trucks" hidden> <%= @trucks %> </p>
+<p id= "tablets" hidden> <%= @tablets %> </p>
+<p id= "wexcards" hidden> <%= @wexcards %> </p>
+<p id= "ez_passes" hidden> <%= @ez_passes %> </p>
+<p id= "temp_statuses" hidden> <%= @temp_statuses %> </p>
+<p id= "temp_verifieds" hidden> <%= @temp_verifieds %> </p>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  route_code: MyString
+  truck: MyString
+  driver: MyString
+  route_date: 2019-10-24
+  badge: MyString
+  wexcard: MyString
+  ez_pass: MyString
+  tablet: MyString
+
+two:
+  route_code: MyString
+  truck: MyString
+  driver: MyString
+  route_date: 2019-10-24
+  badge: MyString
+  wexcard: MyString
+  ez_pass: MyString
+  tablet: MyString

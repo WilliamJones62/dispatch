@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  temp_status: MyString
+  temp_verified: false
+  truck_id: 1
+
+two:
+  temp_status: MyString
+  temp_verified: false
+  truck_id: 1

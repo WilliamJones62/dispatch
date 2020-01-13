@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191009175704) do
+ActiveRecord::Schema.define(version: 20191106131502) do
+
+  create_table "dispatch_logs", force: :cascade do |t|
+    t.string "route_code"
+    t.string "truck"
+    t.string "driver"
+    t.date "route_date"
+    t.string "badge"
+    t.string "wexcard"
+    t.string "ez_pass"
+    t.string "tablet"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "issued_flag"
+    t.boolean "returned_flag"
+  end
+
+  create_table "hardwares", force: :cascade do |t|
+    t.string "owner"
+    t.string "serial_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "routes", force: :cascade do |t|
     t.string "route_code"
@@ -21,6 +43,32 @@ ActiveRecord::Schema.define(version: 20191009175704) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "badge"
+    t.boolean "issued_flag"
+    t.boolean "returned_flag"
+  end
+
+  create_table "truck_finances", force: :cascade do |t|
+    t.integer "truck_id"
+    t.string "wexcard"
+    t.string "ez_pass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "truck_its", force: :cascade do |t|
+    t.string "temp_status"
+    t.boolean "temp_verified"
+    t.integer "truck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.string "location"
+    t.string "truck_number"
+    t.boolean "start_decommission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
